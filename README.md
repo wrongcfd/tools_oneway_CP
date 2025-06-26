@@ -6,5 +6,8 @@
 
  **step2**. `scriptfor_OF_onestep.py` : read hill coords file from hill2D.py, then generate file coords for in sampleDictCoord LB_bottom
 
-
+ # **2. Convert OF results to GASCANS**
+ 
+**step1**. `ReverseOF.py`: generate files for LBM
+ 
  
