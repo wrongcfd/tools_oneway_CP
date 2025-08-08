@@ -17,9 +17,9 @@ def generate_3d_sine_hill(amplitude_xy, length_xy, height_xy, height_3d, resolut
     # nz = int(resolution * height_3d)
 
     with open(f"hill_2d.pc", "w") as ocout:
-        for x in np.arange(0, length_xy+resolution, resolution):
+        for x in np.arange(resolution/2, length_xy+resolution , resolution):
             for y in np.arange(resolution/2, height_xy+resolution, resolution):
-                for z in np.arange(0, height_3d+resolution, resolution):  # Extend to 3D by varying z
+                for z in np.arange(resolution/2, height_3d, resolution):  # Extend to 3D by varying z
                     # Calculate the 3D sine hill function
                     sine_hill_xy = amplitude_xy * np.cos( np.pi *((x-2.5)/ length_xy))**2
                     if x <5 and x>0:
@@ -35,11 +35,11 @@ amplitude_value_xy = 1.0  # Change this to the desired amplitude of the sine hil
 length_value_xy = 5.0  # Change this to the desired length of the sine hill in XY plane
 height_value_xy = 1.0  # Change this to the desired height of the sine hill in XY plane
 height_value_3d = 6.0  # Z length
-res =1.0/5.0 # N+1
+res =1.0/10.0 # N+1
 
 generate_3d_sine_hill(amplitude_value_xy,length_value_xy, height_value_xy, height_value_3d, res)
 
-convert_dos_to_unix("hill_2d.pc", "hill_2dNnew2_unix.pc")
+convert_dos_to_unix("hill_2d.pc", "hill_2dN40_unix.pc")
 
 # # Delete the "hill_2d.pc" file
 # file_to_delete = "hill_2d.pc"
@@ -50,29 +50,33 @@ convert_dos_to_unix("hill_2d.pc", "hill_2dNnew2_unix.pc")
 # except OSError as e:
 #     print(f"Deletion failed: {e}")
 # # Load data from the file
-file_path = "hill_2d.pc"  # Change this to the correct filcat e path
-data = np.loadtxt(file_path)
 
-# Extract coordinates
-x = data[:, 0]
-y = data[:, 1]
-z = data[:, 2]
 
-# Create line data for the sine hill
-x_line = np.arange(0, length_value_xy + res, res)
-y_line = amplitude_value_xy * np.cos(np.pi * ((x_line - 2.5) / length_value_xy))**2
-z_line = np.zeros_like(x_line)
 
-# Plot the 3D sine hill
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax.scatter(x, y, z, s=1, c='blue', marker='o')
-ax.plot(x_line, y_line, z_line, c='red', linewidth=2, label='Sine Hill Line')
 
-ax.set_xlabel('X-axis')
-ax.set_ylabel('Y-axis')
-ax.set_zlabel('Z-axis')
-ax.set_title('3D Sine Hill')
-ax.legend()
+# file_path = "hill_2d.pc"  # Change this to the correct filcat e path
+# data = np.loadtxt(file_path)
 
-plt.show()
+# # Extract coordinates
+# x = data[:, 0]
+# y = data[:, 1]
+# z = data[:, 2]
+
+# # Create line data for the sine hill
+# x_line = np.arange(res / 2, length_value_xy + res, res)
+# y_line = amplitude_value_xy * np.cos(np.pi * ((x_line - 2.5) / length_value_xy))**2
+# z_line = np.zeros_like(x_line)
+
+# # Plot the 3D sine hill
+# fig = plt.figure()
+# ax = fig.add_subplot(111, projection='3d')
+# ax.scatter(x, y, z, s=1, c='blue', marker='o')
+# ax.plot(x_line, y_line, z_line, c='red', linewidth=2, label='Sine Hill Line')
+
+# ax.set_xlabel('X-axis')
+# ax.set_ylabel('Y-axis')
+# ax.set_zlabel('Z-axis')
+# ax.set_title('3D Sine Hill')
+# ax.legend()
+
+# plt.show()
