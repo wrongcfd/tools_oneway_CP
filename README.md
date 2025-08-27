@@ -1,4 +1,4 @@
-# tools_oneway_CP
+# tools_oneway_coupling
 
 # **1. Generate coordinates needed in OF**
 
