@@ -39,7 +39,7 @@ res =1.0/10.0 # N+1
 
 generate_3d_sine_hill(amplitude_value_xy,length_value_xy, height_value_xy, height_value_3d, res)
 
-convert_dos_to_unix("hill_2d.pc", "hill_2dN40_unix.pc")
+convert_dos_to_unix("hill_2d.pc", "hill_2dN10_final.pc")
 
 # # Delete the "hill_2d.pc" file
 # file_to_delete = "hill_2d.pc"
